@@ -1,40 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/ju_logo.png"; // Adjust the path as necessary
 
 const Navbar = () => {
+  const location = useLocation();
+  
+  const linkClasses = (path) => {
+    return location.pathname === path
+      ? "text-yellow-300 text-lg font-medium transition duration-300"
+      : "text-white text-lg font-medium hover:text-yellow-300 transition duration-300";
+  };
+
   return (
-    <nav className="bg-gray-800 p-4 flex items-center justify-between">
+    <nav className="bg-gradient-to-r from-blue-800 to-purple-800 p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center">
         {/* Logo */}
         <img
-          src="https://i.pinimg.com/736x/ab/96/b1/ab96b1db5287493d2197645f563fbd6a.jpg"
+          src={logo}
           alt="Jadavpur University Logo"
-          className="h-10 mr-4"
+          className="h-10 mr-4 rounded-full"
         />
-        {/* Title */}
-        <span className="text-white text-2xl font-semibold">
+        <span className="text-white text-2xl font-bold">
           JU IT Alumni Association
         </span>
       </div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-6">
         {/* Navigation Links */}
-        <Link to="/" className="text-white hover:text-gray-400">
+        <Link to="/" className={linkClasses("/")}>
           Home
         </Link>
-        <Link to="/ambition" className="text-white hover:text-gray-400">
+        <Link to="/ambition" className={linkClasses("/ambition")}>
           Ambition
         </Link>
-        <Link to="/alumni" className="text-white hover:text-gray-400">
+        <Link to="/alumni" className={linkClasses("/alumni")}>
           Alumni
         </Link>
-        <Link to="/blogs-events" className="text-white hover:text-gray-400">
+        <Link to="/blogs-events" className={linkClasses("/blogs-events")}>
           Blogs and Events
         </Link>
-        <Link to="/payment" className="text-white hover:text-gray-400">
+        <Link to="/payment" className={linkClasses("/payment")}>
           Payment
         </Link>
         {/* Login/Signup Button */}
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
+        <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">
           Login / Signup
         </button>
       </div>
