@@ -1,0 +1,10 @@
+[
+    { "name": "John Doe", "imageFileName": "a1.jpg" },
+    { "name": "Jane Smith", "imageFileName": "a2.jpg" },
+    { "name": "Alice Johnson", "imageFileName": "a3.jpg" },
+    { "name": "Bob Brown", "imageFileName": "a4.jpg" },
+    { "name": "Charlie Davis", "imageFileName": "a5.jpg" },
+    { "name": "Diana Evans", "imageFileName": "a6.jpg" },
+    { "name": "Ethan Foster", "imageFileName": "a7.jpg" },
+    { "name": "Fiona Green", "imageFileName": "a8.jpg" }
+  ]
