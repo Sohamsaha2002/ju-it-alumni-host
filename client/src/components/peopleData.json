@@ -1,10 +1,10 @@
 [
-    { "name": "John Doe", "imageFileName": "a1.jpg" },
-    { "name": "Jane Smith", "imageFileName": "a2.jpg" },
-    { "name": "Alice Johnson", "imageFileName": "a3.jpg" },
-    { "name": "Bob Brown", "imageFileName": "a4.jpg" },
-    { "name": "Charlie Davis", "imageFileName": "a5.jpg" },
-    { "name": "Diana Evans", "imageFileName": "a6.jpg" },
-    { "name": "Ethan Foster", "imageFileName": "a7.jpg" },
-    { "name": "Fiona Green", "imageFileName": "a8.jpg" }
+    { "name": "person1", "imageFileName": "a1.jpg" },
+    { "name": "person2", "imageFileName": "a2.jpg" },
+    { "name": "person3", "imageFileName": "a3.jpg" },
+    { "name": "person4", "imageFileName": "a4.jpg" },
+    { "name": "person5", "imageFileName": "a5.jpg" },
+    { "name": "person6", "imageFileName": "a6.jpg" },
+    { "name": "person7", "imageFileName": "a7.jpg" },
+    { "name": "person8", "imageFileName": "a8.jpg" }
   ]
