@@ -8,9 +8,11 @@ const Nota = ({ people }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 625,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // 3 seconds
     responsive: [
       {
         breakpoint: 1024,
