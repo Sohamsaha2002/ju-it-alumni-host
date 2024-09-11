@@ -28,10 +28,10 @@ export default function Body() {
               </button>
             </section>
 
-            <section className="mb-8 p-8 bg-white rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold mb-6 text-blue-800">Notable Alumnis</h2>
-        <Nota people={peopleData} />
-        </section>
+            <section className="mb-8 p-8 bg-white rounded-lg shadow-lg w-full">
+              <h2 className="text-3xl font-bold mb-6 text-blue-800">Notable Alumnis</h2>
+              <Nota people={peopleData} />
+            </section>
 
             <section className="mb-8 p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                 <h1 className="text-4xl font-bold mb-4 text-green-600">Achievement</h1>

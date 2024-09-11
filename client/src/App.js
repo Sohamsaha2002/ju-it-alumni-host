@@ -6,8 +6,9 @@ import Home from "./components/Home"; // Adjust the path as necessary
 import Footer from "./components/Footer";
 const Mission = () => <div>Ambition Page</div>;
 const Alumni = () => <div>Alumni Page</div>;
-const BlogsEvents = () => <div>Blogs and Events Page</div>;
-const Payment = () => <div>Payment Page</div>;
+const Blogs = () => <div>Blogs Page</div>;
+const Events = () => <div>Events Page</div>;
+const Donate = () => <div>Donate Page</div>;
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/alumni" element={<Alumni />} />
-        <Route path="/blogs-events" element={<BlogsEvents />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
     </Router>
     <Footer />

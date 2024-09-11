@@ -6,7 +6,7 @@ const NalumCard = ({ name, imageFileName }) => {
 	<div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
 	  <img
 		className="w-full h-48 object-cover"
-		src={require(`../assets/${imageFileName}`)}
+		src={require(`../assets/homenotable/${imageFileName}`)}
 		alt={name}
 	  />
 	  <div className="px-6 py-4">

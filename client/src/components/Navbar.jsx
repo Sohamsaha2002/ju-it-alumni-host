@@ -36,11 +36,14 @@ const Navbar = () => {
         <Link to="/alumni" className={linkClasses("/alumni")}>
           Alumni
         </Link>
-        <Link to="/blogs-events" className={linkClasses("/blogs-events")}>
-          Blogs and Events
+        <Link to="/blogs" className={linkClasses("/blogs")}>
+          Blogs
         </Link>
-        <Link to="/payment" className={linkClasses("/payment")}>
-          Payment
+        <Link to="/events" className={linkClasses("/events")}>
+          Events
+        </Link>
+        <Link to="/donate" className={linkClasses("/donate")}>
+          Donate
         </Link>
         {/* Login/Signup Button */}
         <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">
@@ -74,17 +77,20 @@ const Navbar = () => {
             <Link to="/" className={linkClasses("/")}>
               Home
             </Link>
-            <Link to="/ambition" className={linkClasses("/ambition")}>
-              Ambition
+            <Link to="/mission" className={linkClasses("/mission")}>
+              Mission
             </Link>
             <Link to="/alumni" className={linkClasses("/alumni")}>
               Alumni
             </Link>
-            <Link to="/blogs-events" className={linkClasses("/blogs-events")}>
-              Blogs and Events
+            <Link to="/blogs" className={linkClasses("/blogs")}>
+              Blogs
             </Link>
-            <Link to="/payment" className={linkClasses("/payment")}>
-              Payment
+            <Link to="/events" className={linkClasses("/events")}>
+              Events
+            </Link>
+            <Link to="/donate" className={linkClasses("/donate")}>
+              Donate
             </Link>
             <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">
               Login / Signup
