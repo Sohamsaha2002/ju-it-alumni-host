@@ -2,7 +2,12 @@ import React from "react";
 import smcc from "../assets/smcc.jpg"; // Adjust the path as necessary
 import Nota from "./Nota";
 import peopleData from "./peopleData";
+import { useNavigate } from "react-router-dom";
 export default function Body() {
+    const navigate = useNavigate();
+    const handleLearnMoreClick = () => {
+        navigate("/mission");
+    };
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
             {/* Image with Text Overlay */}
@@ -23,8 +28,11 @@ export default function Body() {
               <p className="text-xl text-gray-800 leading-relaxed">
                 The mission of the Alumni Management Association of Jadavpur University Department of Information Technology is to foster a lifelong relationship between the university and its alumni. We aim to create a vibrant community of graduates who are engaged, informed, and inspired to contribute to the growth and development of the department and the university. Through various initiatives, events, and programs, we strive to support the professional and personal growth of our alumni, while also promoting the values of excellence, innovation, and collaboration that define our institution.
               </p>
-              <button className="mt-6 px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300">
-                Learn More
+              <button
+                  className="mt-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-md font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={handleLearnMoreClick}
+              >
+                  Learn More
               </button>
             </section>
 
