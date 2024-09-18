@@ -23,6 +23,18 @@ const Navbar = () => {
     navigate(path);
   };
 
+  const handleMouseEnter = () => {
+    if (window.innerWidth >= 768) {
+      setDropdownOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.innerWidth >= 768) {
+      setDropdownOpen(false);
+    }
+  };
+
   return (
     <nav className="bg-gradient-to-r from-blue-800 to-purple-800 p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center">
@@ -44,7 +56,11 @@ const Navbar = () => {
         <Link to="/mission" className={linkClasses("/mission")}>
           Mission
         </Link>
-        <div className="relative group">
+        <div
+          className="relative group"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <button
             onClick={handleDropdownToggle}
             className={`${linkClasses("/alumni")} flex items-center`}
@@ -65,20 +81,22 @@ const Navbar = () => {
               ></path>
             </svg>
           </button>
-          <div className="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2">
-            <button
-              onClick={() => handleDropdownItemClick('/alumni/ug')}
-              className="block px-6 py-3 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md shadow-md transition duration-300"
-            >
-              UG
-            </button>
-            <button
-              onClick={() => handleDropdownItemClick('/alumni/pg')}
-              className="block px-6 py-3 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md shadow-md transition duration-300"
-            >
-              PG
-            </button>
-          </div>
+          {dropdownOpen && (
+            <div className="absolute bg-white shadow-lg rounded mt-2 z-50">
+              <button
+                onClick={() => handleDropdownItemClick('/alumni/ug')}
+                className="block px-6 py-3 text-gray-800 bg-blue-100 hover:bg-blue-200 rounded-md shadow-md transition duration-300"
+              >
+                UG
+              </button>
+              <button
+                onClick={() => handleDropdownItemClick('/alumni/pg')}
+                className="block px-6 py-3 text-gray-800 bg-blue-100 hover:bg-blue-200 rounded-md shadow-md transition duration-300"
+              >
+                PG
+              </button>
+            </div>
+          )}
         </div>
         <Link to="/blogs" className={linkClasses("/blogs")}>
           Blogs
@@ -89,7 +107,6 @@ const Navbar = () => {
         <Link to="/donate" className={linkClasses("/donate")}>
           Donate
         </Link>
-        {/* Login/Signup Button */}
         <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">
           Login / Signup
         </button>
@@ -145,20 +162,22 @@ const Navbar = () => {
                   ></path>
                 </svg>
               </button>
-              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2">
-                <button
-                  onClick={() => handleDropdownItemClick('/alumni/ug')}
-                  className="block px-6 py-3 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md shadow-md transition duration-300"
-                >
-                  UG
-                </button>
-                <button
-                  onClick={() => handleDropdownItemClick('/alumni/pg')}
-                  className="block px-6 py-3 text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md shadow-md transition duration-300"
-                >
-                  PG
-                </button>
-              </div>
+              {dropdownOpen && (
+                <div className="absolute bg-white shadow-lg rounded mt-2 z-50">
+                  <button
+                    onClick={() => handleDropdownItemClick('/alumni/ug')}
+                    className="block px-6 py-3 text-gray-800 bg-blue-100 hover:bg-blue-200 rounded-md shadow-md transition duration-300"
+                  >
+                    UG
+                  </button>
+                  <button
+                    onClick={() => handleDropdownItemClick('/alumni/pg')}
+                    className="block px-6 py-3 text-gray-800 bg-blue-100 hover:bg-blue-200 rounded-md shadow-md transition duration-300"
+                  >
+                    PG
+                  </button>
+                </div>
+              )}
             </div>
             <Link to="/blogs" className={linkClasses("/blogs")}>
               Blogs
