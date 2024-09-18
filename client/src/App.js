@@ -9,6 +9,9 @@ const Mission = () => <div>Ambition Page</div>;
 const Alumni = () => <div>Alumni Page</div>;
 const Blogs = () => <div>Blogs Page</div>;
 const Events = () => <div>Events Page</div>;
+const Achievement = () => <div>Achievement Page</div>;
+const UG = () => <div>UG Alumni Page</div>;
+const PG = () => <div>PG Alumni Page</div>;
 
 function App() {
   return (
@@ -19,9 +22,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/alumni" element={<Alumni />} />
+        <Route path="/alumni/ug" element={<UG />} />
+        <Route path="/alumni/pg" element={<PG />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/events" element={<Events />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/achievement" element={<Achievement />} />
       </Routes>
     </Router>
     <Footer />
