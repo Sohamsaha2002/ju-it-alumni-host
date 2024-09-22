@@ -6,11 +6,10 @@ import Home from "./components/Home"; // Adjust the path as necessary
 import Footer from "./components/Footer";
 import Donate from "./components/Donate"; // Adjust the path as necessary
 import Mission from "./components/Mission"; // Adjust the path as necessary
-
+import Achievement from "./components/Achievement.jsx";
 const Alumni = () => <div>Alumni Page</div>;
 const Blogs = () => <div>Blogs Page</div>;
 const Events = () => <div>Events Page</div>;
-const Achievement = () => <div>Achievement Page</div>;
 const UG = () => <div>UG Alumni Page</div>;
 const PG = () => <div>PG Alumni Page</div>;
 

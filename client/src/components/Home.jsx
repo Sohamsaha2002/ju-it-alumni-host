@@ -55,10 +55,10 @@ export default function Body() {
         <p className="text-lg text-gray-700">
           Jadavpur University Department of Information Technology has produced numerous distinguished alumni who have made significant contributions in various fields. Some notable achievements include:
           <ul className="list-disc list-inside mt-2">
-            <li>Dr. Subir Kumar Saha, a renowned academician and researcher in robotics and automation.</li>
-            <li>Dr. Arindam Biswas, a leading expert in artificial intelligence and machine learning.</li>
-            <li>Mr. Sumantra Sarkar, a successful entrepreneur and founder of multiple tech startups.</li>
-            <li>Ms. Ananya Chatterjee, a prominent figure in the field of cybersecurity.</li>
+            <li>Dr. A 1, a renowned academician and researcher in robotics and automation.</li>
+            <li>Dr. B 1, a leading expert in artificial intelligence and machine learning.</li>
+            <li>Mr. C 1, a successful entrepreneur and founder of multiple tech startups.</li>
+            <li>Ms. D 1, a prominent figure in the field of cybersecurity.</li>
           </ul>
         </p>
         <button
