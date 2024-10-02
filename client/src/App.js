@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Donate from "./components/Donate"; // Adjust the path as necessary
 import Mission from "./components/Mission"; // Adjust the path as necessary
 import Achievement from "./components/Achievement.jsx";
+//import Events from "./components/Events"; // Adjust the path as necessary
 const Alumni = () => <div>Alumni Page</div>;
 const Blogs = () => <div>Blogs Page</div>;
 const Events = () => <div>Events Page</div>;
