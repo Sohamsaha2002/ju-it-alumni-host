@@ -46,7 +46,7 @@ const Nota = ({ people }) => {
       <Slider {...settings}>
         {people.map((person, index) => (
           <div key={index} className="p-2">
-            <Nalumcard name={person.name} imageFileName={person.imageFileName} />
+            <Nalumcard name={person.name} imageFileName={person.imageFileName} year={person.year} />
           </div>
         ))}
       </Slider>
