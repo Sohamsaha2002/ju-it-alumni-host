@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginSignup = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -7,6 +8,7 @@ const LoginSignup = ({ onLogin }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const LoginSignup = ({ onLogin }) => {
         ? await axios.post('http://localhost:5000/login', { email, password })
         : await axios.post('http://localhost:5000/register', { name, email, password });
       onLogin(response.data.token);
+      navigate('/'); // Redirect to home page after successful login or registration
     } catch (error) {
       setError('Invalid email or password');
     }
