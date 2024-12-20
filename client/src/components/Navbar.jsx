@@ -12,6 +12,13 @@ const Navbar = ({ user, onLogout }) => {
       : "block mt-4 lg:inline-block lg:mt-0 text-white text-lg font-medium hover:text-yellow-300 transition duration-300 mr-4";
   };
 
+  const formatUsername = (name) => {
+    return name
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   return (
     <nav className="bg-gradient-to-r from-blue-800 to-purple-800 p-4 shadow-lg">
       <div className="container mx-auto flex items-center justify-between flex-wrap">
@@ -66,8 +73,8 @@ const Navbar = ({ user, onLogout }) => {
             </Link>
             {user ? (
               <>
-                <span className="text-white text-lg font-medium mr-4 mt-4 lg:mt-0">
-                  {user.name}
+                <span className="bg-white text-blue-800 text-lg font-medium mr-4 mt-4 lg:mt-0 px-4 py-2 rounded-full">
+                  {formatUsername(user.name)}
                 </span>
                 <button
                   onClick={onLogout}

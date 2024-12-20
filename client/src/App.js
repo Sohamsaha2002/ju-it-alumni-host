@@ -7,6 +7,7 @@ import Alumni from './components/Alumni';
 import Events from './components/Events';
 import Donate from './components/Donate';
 import Footer from './components/Footer';
+import Achievement from './components/Achievement.jsx';
 import LoginSignup from './components/LoginSignup';
 import {jwtDecode} from 'jwt-decode';
 
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/events/*" element={<Events />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/achievement" element={<Achievement />} />
         <Route path="/login" element={<LoginSignup onLogin={handleLogin} />} />
         <Route path="/register" element={<LoginSignup onLogin={handleLogin} />} />
         <Route path="*" element={<Navigate to="/" />} />
