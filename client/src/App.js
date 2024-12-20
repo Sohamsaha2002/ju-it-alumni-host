@@ -6,6 +6,7 @@ import Mission from './components/Mission';
 import Alumni from './components/Alumni';
 import Events from './components/Events';
 import Donate from './components/Donate';
+import Footer from './components/Footer';
 import LoginSignup from './components/LoginSignup';
 import {jwtDecode} from 'jwt-decode';
 
@@ -50,6 +51,7 @@ const App = () => {
   };
 
   return (
+    <>
     <Router>
       <Navbar user={user} onLogout={handleLogout} />
       <Routes>
@@ -64,6 +66,8 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
+    <Footer/>
+    </>
   );
 };
 
