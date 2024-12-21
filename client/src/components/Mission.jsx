@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import missionImage from "../assets/mission.jpg"; // Adjust the path as necessary
 
 const Mission = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <section className="relative mb-8">
@@ -42,7 +45,10 @@ const Mission = () => {
         <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
           We invite all alumni of the Jadavpur University Department of Information Technology to join our association and be a part of this vibrant community. Together, we can make a difference and contribute to the continued success of our alma mater.
         </p>
-        <button className="mt-4 px-4 py-2 bg-green-600 text-white text-md font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <button
+          onClick={() => navigate('/login')}
+          className="mt-4 px-4 py-2 bg-green-600 text-white text-md font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        >
           Join Now
         </button>
       </section>

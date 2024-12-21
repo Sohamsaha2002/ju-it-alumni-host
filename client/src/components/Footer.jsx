@@ -8,15 +8,16 @@ export default function Footer() {
                     <div>
                         <h5 className="font-bold mb-2">Contact Us</h5>
                         <ul>
-                            <li>Email: info@juit.edu</li>
-                            <li>Phone: +123 456 7890</li>
+                            <li>Email: kartick.mondal@jadavpuruniversity.in</li>
+                            <li>Phone: +91 9635335745</li>
                         </ul>
                     </div>
                     <div>
                         <h5 className="font-bold mb-2">Location</h5>
                         <ul>
-                            <li>Sector 3 Saltlake</li>
-                            <li>Kolkata, West Bengal, 700098</li>
+                            <li>Plot No.8, Salt Lake Bypass, LB Block,</li>
+                            <li>Sector III, Salt Lake City,</li>
+                            <li>Kolkata - 700106.</li>
                         </ul>
                     </div>
                     <div>

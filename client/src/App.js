@@ -7,17 +7,11 @@ import Alumni from './components/Alumni';
 import Events from './components/Events';
 import Donate from './components/Donate';
 import Footer from './components/Footer';
+import Blogs from './components/Blogs';
 import Achievement from './components/Achievement.jsx';
 import LoginSignup from './components/LoginSignup';
 import {jwtDecode} from 'jwt-decode';
 
-const Blogs = () => {
-  return (
-    <div>
-      <h1>Blogs</h1>
-    </div>
-  );
-};
 
 const App = () => {
   const [user, setUser] = useState(null);

@@ -72,7 +72,7 @@ export default function Body() {
       <section className="p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
         <h1 className="text-3xl md:text-4xl font-bold mb-4 text-red-600">Events</h1>
         <p className="text-lg text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          The Jadavpur University Information Technology Alumni Association hosts a variety of events throughout the year to engage and connect alumni. These events include bi-annual reunions, networking sessions, guest lectures by distinguished alumni, workshops, and webinars on the latest trends in technology. These gatherings provide a platform for alumni to share their experiences, gain insights from industry leaders, and foster professional and personal growth. Join us at our next event to reconnect with old friends, make new connections, and stay updated with the advancements in the field of Information Technology.
         </p>
         <button
           className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors duration-300"
