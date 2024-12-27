@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Illumine22 from './Illumine22';
-import Illumine20 from './Illumine20';
+//import Illumine20 from './Illumine20';
 import Illumine18 from './Illumine18';
 // Add more imports for other years as needed
 
