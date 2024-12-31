@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import Illumine22 from './Illumine22';
-//import Illumine20 from './Illumine20';
-import Illumine18 from './Illumine18';
-// Add more imports for other years as needed
+import Illumine22 from './illumine/Illumine22';
+import Illumine24 from './illumine/Illumine24';
+import Illumine18 from './illumine/Illumine18';
+import Illumine04 from './illumine/Illumine04';
+import Illumine06 from './illumine/Illumine06';
+import Illumine08 from './illumine/Illumine08';
+import Illumine10 from './illumine/Illumine10';
+import Illumine12 from './illumine/Illumine12';
+import Illumine14 from './illumine/Illumine14';
+import Illumine16 from './illumine/Illumine16';
 
 const events = [
+  { year: '2024', component: Illumine24 },
   { year: '2022', component: Illumine22 },
-  /*{ year: '2020', component: Illumine20 },*/
   { year: '2018', component: Illumine18 },
-  // Add more components for other years as needed
+  { year: '2016', component: Illumine16 },
+  { year: '2014', component: Illumine14 },
+  { year: '2012', component: Illumine12 },
+  { year: '2010', component: Illumine10 },
+  { year: '2008', component: Illumine08 },
+  { year: '2006', component: Illumine06 },
+  { year: '2004', component: Illumine04 },
 ];
-
-// Generate events for years from 2004 to 2016 biannually
-for (let year = 2004; year < 2018; year += 2) {
-  if(year==2020)
-    continue;
-  events.push({ year: year.toString(), component: () => <div>ILLUMINE {year}</div> });
-}
 
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
