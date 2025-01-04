@@ -14,7 +14,7 @@ const Mission = () => {
           className="w-full h-96 object-cover rounded-lg shadow-lg"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-200 px-4 md:px-8 py-2 md:py-4 rounded-lg shadow-2xl bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent transform translate-y-1/4 font-poppins">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-200 px-4 md:px-8 py-2 md:py-4 rounded-lg shadow-2xl bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent transform translate-y-1/4 font-poppins animate-pulse">
             Our Mission
           </h1>
         </div>
