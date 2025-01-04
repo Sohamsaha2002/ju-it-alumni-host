@@ -45,14 +45,14 @@ export default function Body() {
         </button>
       </section>
 
-      <section className="mb-8 p-4 md:p-8 bg-white rounded-lg shadow-lg w-full">
+      <section className="mb-8 p-4 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-blue-800">Notable Alumnis</h2>
         <Nota people={peopleData} />
       </section>
 
-      <section className="mb-8 p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-green-600">Achievement</h1>
-        <p className="text-lg text-gray-700">
+      <section className="mb-8 p-4 md:p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-blue-800">Achievement</h1>
+        <p className="text-lg text-gray-800">
           Jadavpur University Department of Information Technology has produced numerous distinguished alumni who have made significant contributions in various fields. Some notable achievements include:
           <ul className="list-disc list-inside mt-2">
             <li>Dr. A 1, a renowned academician and researcher in robotics and automation.</li>
@@ -62,20 +62,20 @@ export default function Body() {
           </ul>
         </p>
         <button
-          className="mt-4 px-3 py-1 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-700 transition-colors duration-300"
+          className="mt-4 px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-sm font-semibold rounded-full hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           onClick={handleDiscoverMoreClick}
         >
           Discover More
         </button>
       </section>
 
-      <section className="p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-red-600">Events</h1>
-        <p className="text-lg text-gray-700">
+      <section className="p-4 md:p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-blue-800">Events</h1>
+        <p className="text-lg text-gray-800">
           The Jadavpur University Information Technology Alumni Association hosts a variety of events throughout the year to engage and connect alumni. These events include bi-annual reunions, networking sessions, guest lectures by distinguished alumni, workshops, and webinars on the latest trends in technology. These gatherings provide a platform for alumni to share their experiences, gain insights from industry leaders, and foster professional and personal growth. Join us at our next event to reconnect with old friends, make new connections, and stay updated with the advancements in the field of Information Technology.
         </p>
         <button
-          className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors duration-300"
+          className="mt-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           onClick={handleViewEventsClick}
         >
           View Events
