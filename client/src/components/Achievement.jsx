@@ -35,13 +35,13 @@ const Achievement = () => {
         <h2 className="text-3xl font-bold mb-6 text-center">Achievements</h2>
         <div className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4">
-            <h3 className="text-2xl font-bold mb-4">UG Achievements</h3>
+            <h3 className="text-2xl font-bold mb-4">UG Alumni Achievements</h3>
             {achievements
               .filter((achievement) => achievement.ug_pg === 'ug')
               .map((achievement) => renderCard(achievement))}
           </div>
           <div className="w-full md:w-1/2 px-4">
-            <h3 className="text-2xl font-bold mb-4">PG Achievements</h3>
+            <h3 className="text-2xl font-bold mb-4">PG Alumni Achievements</h3>
             {achievements
               .filter((achievement) => achievement.ug_pg === 'pg')
               .map((achievement) => renderCard(achievement))}
