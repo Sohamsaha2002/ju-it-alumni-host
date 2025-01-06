@@ -1,0 +1,22 @@
+[
+    {
+      "name": "John Doe",
+      "rollNo": "2020UG001"
+    },
+    {
+      "name": "Jane Smith",
+      "rollNo": "2020UG002"
+    },
+    {
+      "name": "Alice Johnson",
+      "rollNo": "2020UG003"
+    },
+    {
+      "name": "Bob Brown",
+      "rollNo": "2020UG004"
+    },
+    {
+      "name": "Charlie Davis",
+      "rollNo": "2020UG005"
+    }
+  ]
