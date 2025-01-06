@@ -15,13 +15,18 @@ const Alumni = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4 text-center">Alumni</h1>
-      
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <section className="mb-8 p-4 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center text-blue-800">Welcome to the Alumni Portal</h1>
+        <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+          Connect with fellow alumni, explore notable achievements, and stay updated with the latest events. Our alumni network is a vibrant community of graduates who are engaged, informed, and inspired to contribute to the growth and development of the department and the university.
+        </p>
+      </section>
+
       <div className="mb-8 text-center">
         <button
           onClick={() => setShowAchievements(!showAchievements)}
-          className="text-white bg-blue-500 px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300"
+          className="text-white bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105 mx-2"
         >
           Notable Alumni
         </button>
@@ -31,13 +36,13 @@ const Alumni = () => {
       <div className="flex justify-center space-x-4 mb-4">
         <button
           onClick={() => { setShowUG(!showUG); setShowPG(false); }}
-          className="text-white bg-green-500 px-6 py-3 rounded-full hover:bg-green-600 transition duration-300"
+          className="text-white bg-gradient-to-r from-green-500 to-green-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
           UG
         </button>
         <button
           onClick={() => { setShowPG(!showPG); setShowUG(false); }}
-          className="text-white bg-purple-500 px-6 py-3 rounded-full hover:bg-purple-600 transition duration-300"
+          className="text-white bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
           PG
         </button>
