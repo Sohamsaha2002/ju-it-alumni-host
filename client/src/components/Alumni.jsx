@@ -14,6 +14,18 @@ const Alumni = () => {
     setSelectedBatch(batch);
   };
 
+  const handleUGClick = () => {
+    setShowUG(!showUG);
+    setShowPG(false);
+    setSelectedBatch(null); // Reset selected batch
+  };
+
+  const handlePGClick = () => {
+    setShowPG(!showPG);
+    setShowUG(false);
+    setSelectedBatch(null); // Reset selected batch
+  };
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <section className="mb-8 p-4 md:p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -35,13 +47,13 @@ const Alumni = () => {
 
       <div className="flex justify-center space-x-4 mb-4">
         <button
-          onClick={() => { setShowUG(!showUG); setShowPG(false); }}
+          onClick={handleUGClick}
           className="text-white bg-gradient-to-r from-green-500 to-green-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
           UG
         </button>
         <button
-          onClick={() => { setShowPG(!showPG); setShowUG(false); }}
+          onClick={handlePGClick}
           className="text-white bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
           PG
