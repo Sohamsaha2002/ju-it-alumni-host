@@ -40,7 +40,7 @@ const Alumni = () => {
           onClick={() => setShowAchievements(!showAchievements)}
           className="text-white bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105 mx-2"
         >
-          Notable Alumni
+          Notable Alumni <br /> <span className="text-sm">Click to View</span>
         </button>
         {showAchievements && <Achievement />}
       </div>
@@ -50,13 +50,13 @@ const Alumni = () => {
           onClick={handleUGClick}
           className="text-white bg-gradient-to-r from-green-500 to-green-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
-          UG
+          UG Alumni <br /> <span className="text-sm">Click to expand</span>
         </button>
         <button
           onClick={handlePGClick}
           className="text-white bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
         >
-          PG
+          PG Alumni <br /> <span className="text-sm">Click to expand</span>
         </button>
       </div>
 
