@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Achievement from "./Achievement.jsx";
+import { useNavigate } from "react-router-dom";
 import UGBatches from "./UGBatches.jsx";
 import PGBatches from "./PGBatches.jsx";
 import StudentDetails from "./StudentDetails.jsx";
 
 const Alumni = () => {
-  const [showAchievements, setShowAchievements] = useState(false);
   const [showUG, setShowUG] = useState(false);
   const [showPG, setShowPG] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState(null);
+  const navigate = useNavigate();
 
   const handleBatchSelect = (batch) => {
     setSelectedBatch(batch);
@@ -37,12 +37,11 @@ const Alumni = () => {
 
       <div className="mb-8 text-center">
         <button
-          onClick={() => setShowAchievements(!showAchievements)}
+          onClick={() => navigate('/achievement')}
           className="text-white bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105 mx-2"
         >
           Notable Alumni <br /> <span className="text-sm">Click to View</span>
         </button>
-        {showAchievements && <Achievement />}
       </div>
 
       <div className="flex justify-center space-x-4 mb-4">
