@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import UGAchievementBatches from './UGAchievementBatches';
+import PGAchievementBatches from './PGAchievementBatches';
+import AchievementCards from './AchievementCards';
 
 const Achievement = () => {
   const [ugAchievements, setUgAchievements] = useState([]);
   const [pgAchievements, setPgAchievements] = useState([]);
+  const [showUG, setShowUG] = useState(false);
+  const [showPG, setShowPG] = useState(false);
+  const [selectedBatch, setSelectedBatch] = useState(null);
 
   useEffect(() => {
     fetch('/assets/achievement.json')
@@ -16,44 +22,43 @@ const Achievement = () => {
       .catch((error) => console.error('Error fetching achievements:', error));
   }, []);
 
-  const renderCard = (achievement) => {
-    const imagePath = achievement.ug_pg === 'ug'
-      ? `/assets/achievementug/${achievement.photoFileName}`
-      : `/assets/achievementpg/${achievement.photoFileName}`;
-
-    return (
-      <div key={achievement.name} className="bg-white p-2 rounded-lg shadow-lg m-2 w-full md:w-1/2 lg:w-1/3">
-        <img
-          src={imagePath}
-          alt={achievement.name}
-          className="w-full h-auto object-contain rounded-t-lg"
-        />
-        <div className="p-2">
-          <h3 className="text-lg font-bold mb-1">{achievement.name}</h3>
-          <p className="text-gray-700 mb-1">{achievement.description}</p>
-          <p className="text-gray-500">{achievement.ug_pg.toUpperCase()}</p>
-        </div>
-      </div>
-    );
+  const handleBatchSelect = (batch) => {
+    setSelectedBatch(batch);
   };
+
+  const renderBatchSelection = () => (
+    <div className="flex justify-center space-x-4 mb-4">
+      <button
+        onClick={() => { setShowUG(!showUG); setShowPG(false); setSelectedBatch(null); }}
+        className="text-white bg-gradient-to-r from-green-500 to-green-700 px-6 py-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
+      >
+        UG Alumni Achievement
+      </button>
+      <button
+        onClick={() => { setShowPG(!showPG); setShowUG(false); setSelectedBatch(null); }}
+        className="text-white bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
+      >
+        PG Alumni Achievement
+      </button>
+    </div>
+  );
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">Achievements</h2>
-        <div className="flex flex-wrap -mx-2">
-          <div className="w-full md:w-1/2 px-2">
-            <h3 className="text-2xl font-bold mb-4 text-center">UG Alumni Achievements</h3>
-            <div className="flex flex-wrap">
-              {ugAchievements.map(renderCard)}
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 px-2">
-            <h3 className="text-2xl font-bold mb-4 text-center">PG Alumni Achievements</h3>
-            <div className="flex flex-wrap">
-              {pgAchievements.map(renderCard)}
-            </div>
-          </div>
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center text-blue-800">Alumni Achievements</h1>
+      {renderBatchSelection()}
+      <div className="flex">
+        <div className="w-1/3 pr-4">
+          {showUG && <UGAchievementBatches onSelectBatch={handleBatchSelect} />}
+          {showPG && <PGAchievementBatches onSelectBatch={handleBatchSelect} />}
+        </div>
+        <div className="w-2/3 pl-4">
+          {selectedBatch && (
+            <AchievementCards
+              achievements={showUG ? ugAchievements : pgAchievements}
+              batch={selectedBatch}
+            />
+          )}
         </div>
       </div>
     </div>

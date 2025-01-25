@@ -1,50 +1,30 @@
 [
-    {
-      "name": "person1",
-      "photoFileName": "a1.jpg",
-      "description": "Achieved top grades in the final year.",
-      "ug_pg": "ug"
-    },
-    {
-      "name": "person2",
-      "photoFileName": "a2.jpg",
-      "description": "Published a research paper in a reputed journal.",
-      "ug_pg": "pg"
-    },
-    {
-      "name": "person3",
-      "photoFileName": "a3.jpg",
-      "description": "Won the university coding competition.",
-      "ug_pg": "ug"
-    },
-    {
-      "name": "person4",
-      "photoFileName": "a4.jpg",
-      "description": "Developed an innovative project for the final year.",
-      "ug_pg": "pg"
-    },
-    {
-      "name": "person5",
-      "photoFileName": "a5.jpg",
-      "description": "Secured a prestigious internship.",
-      "ug_pg": "ug"
-    },
-    {
-      "name": "person6",
-      "photoFileName": "a6.jpg",
-      "description": "Received the best thesis award.",
-      "ug_pg": "pg"
-    },
-    {
-      "name": "person7",
-      "photoFileName": "a7.jpg",
-      "description": "Led a successful student organization.",
-      "ug_pg": "ug"
-    },
-    {
-      "name": "person8",
-      "photoFileName": "a8.jpg",
-      "description": "Contributed to a significant research project.",
-      "ug_pg": "pg"
-    }
-  ]
+  {
+    "name": "John Doe",
+    "description": "Awarded for outstanding research in AI.",
+    "photoFileName": "john_doe.jpg",
+    "batch": "2000-2004",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Jane Smith",
+    "description": "Recognized for contributions to software engineering.",
+    "photoFileName": "jane_smith.jpg",
+    "batch": "2001-2005",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Alice Johnson",
+    "description": "Honored for innovative work in data science.",
+    "photoFileName": "alice_johnson.jpg",
+    "batch": "2002-2004",
+    "ug_pg": "pg"
+  },
+  {
+    "name": "Bob Brown",
+    "description": "Awarded for excellence in cybersecurity.",
+    "photoFileName": "bob_brown.jpg",
+    "batch": "2003-2005",
+    "ug_pg": "pg"
+  }
+]
