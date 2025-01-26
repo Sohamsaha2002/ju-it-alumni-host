@@ -26,5 +26,12 @@
     "photoFileName": "bob_brown.jpg",
     "batch": "2003-2005",
     "ug_pg": "pg"
+  },
+  {
+    "name": "Sreetama Mukherjee",
+    "description": "Software Engineer at Microsoft,Summer Research Fellow at Indian Academy of Science",
+    "photoFileName": "Sreetama_Mukherjee.jpg",
+    "batch": "2013-2017",
+    "ug_pg": "ug"
   }
 ]
