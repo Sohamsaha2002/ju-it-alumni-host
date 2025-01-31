@@ -33,5 +33,19 @@
     "photoFileName": "Sreetama_Mukherjee.jpg",
     "batch": "2013-2017",
     "ug_pg": "ug"
+  },
+  {
+    "name": "Arnab Ghatak",
+    "description": "Software Engineer at Google,ex-software engineer at Amazon",
+    "photoFileName": "arnab_ghatak.jpg",
+    "batch": "2013-2017",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Ujjwal Gupta",
+    "description": "Computer Scientist at Adobe",
+    "photoFileName": "ujjwal_gupta.jpg",
+    "batch": "2010-2014",
+    "ug_pg": "ug"
   }
 ]
