@@ -6,7 +6,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -16,10 +15,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 const mongourl = process.env.MONGODB_URL;
 
 // Connect to MongoDB
-mongoose.connect(mongourl , {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(mongourl);
 
 // Define User schema and model
 const userSchema = new mongoose.Schema({
@@ -29,6 +25,13 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+// Routes
+const posts = require('./routes/posts');
+const blogs = require('./routes/blogs');
+
+app.use('/api/posts', posts);
+app.use('/api/blogs', blogs);
 
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;

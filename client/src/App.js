@@ -12,7 +12,6 @@ import Achievement from './components/Achievement.jsx';
 import LoginSignup from './components/LoginSignup';
 import {jwtDecode} from 'jwt-decode';
 
-
 const App = () => {
   const [user, setUser] = useState(null);
 
@@ -36,7 +35,6 @@ const App = () => {
       setUser(decoded);
     } catch (error) {
       console.error('Invalid token:', error);
-      localStorage.removeItem('token');
     }
   };
 
@@ -46,24 +44,21 @@ const App = () => {
   };
 
   return (
-    <>
     <Router>
       <Navbar user={user} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/alumni" element={<Alumni />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/events/*" element={<Events />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/donate" element={<Donate />} />
+        <Route path="/blogs" element={<Blogs user={user} />} />
         <Route path="/achievement" element={<Achievement />} />
         <Route path="/login" element={<LoginSignup onLogin={handleLogin} />} />
-        <Route path="/register" element={<LoginSignup onLogin={handleLogin} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <Footer />
     </Router>
-    <Footer/>
-    </>
   );
 };
 
