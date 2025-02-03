@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UGBatches from "./UGBatches.jsx";
 import PGBatches from "./PGBatches.jsx";
+import PGSixSemesterBatches from "./PGSixSemesterBatches.jsx";
 import StudentDetails from "./StudentDetails.jsx";
 
 const Alumni = () => {
   const [showUG, setShowUG] = useState(false);
   const [showPG, setShowPG] = useState(false);
+  const [showPGSixSemester, setShowPGSixSemester] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState(null);
   const navigate = useNavigate();
 
@@ -17,12 +19,21 @@ const Alumni = () => {
   const handleUGClick = () => {
     setShowUG(!showUG);
     setShowPG(false);
+    setShowPGSixSemester(false);
     setSelectedBatch(null); // Reset selected batch
   };
 
   const handlePGClick = () => {
     setShowPG(!showPG);
     setShowUG(false);
+    setShowPGSixSemester(false);
+    setSelectedBatch(null); // Reset selected batch
+  };
+
+  const handlePGSixSemesterClick = () => {
+    setShowPGSixSemester(!showPGSixSemester);
+    setShowUG(false);
+    setShowPG(false);
     setSelectedBatch(null); // Reset selected batch
   };
 
@@ -57,12 +68,19 @@ const Alumni = () => {
         >
           PG Alumni <br /> <span className="text-sm">Click to expand</span>
         </button>
+        <button
+          onClick={handlePGSixSemesterClick}
+          className="text-white bg-gradient-to-r from-orange-500 to-orange-700 px-6 py-6 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105"
+        >
+          PG Six Semester <br /> <span className="text-sm">Click to expand</span>
+        </button>
       </div>
 
       <div className="flex">
         <div className="w-1/3 pr-4">
           {showUG && <UGBatches onSelectBatch={handleBatchSelect} />}
           {showPG && <PGBatches onSelectBatch={handleBatchSelect} />}
+          {showPGSixSemester && <PGSixSemesterBatches onSelectBatch={handleBatchSelect} />}
         </div>
         <div className="w-2/3 pl-4">
           {selectedBatch && <StudentDetails batch={selectedBatch} />}
