@@ -43,9 +43,13 @@ const Blogs = ({ user }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">Blogs</h2>
+    <div className="bg-gray-100 min-h-screen">
+      <div className="bg-cover bg-center h-40" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}>
+        <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
+          <h1 className="text-4xl font-bold text-white">Welcome to Our Blogs</h1>
+        </div>
+      </div>
+      <div className="container mx-auto p-6">
         {user && <CreateBlog addBlog={addBlog} />}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {blogs.map((blog) => (
