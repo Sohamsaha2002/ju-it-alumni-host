@@ -180,5 +180,62 @@
     "photoFileName": "aman_sethi.jpg",
     "batch": "2012-2016",
     "ug_pg": "ug"
+  },
+  {
+    "name": "Tamseel Shams",
+    "description": "Firmware Developer at IBM",
+    "photoFileName": "tamseel_shams.jpg",
+    "batch": "2011-2015",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Rajat Chowdhary",
+    "description": "Senior Software Engineer at Google",
+    "photoFileName": "rajat_chowdhary.jpg",
+    "batch": "2012-2016",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Tulika Gupta",
+    "description": "Software Development Engineer III at Amazon",
+    "photoFileName": "tulika_gupta.jpg",
+    "batch": "2011-2015",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Pintu Gupta",
+    "description": "Technical Lead at IBM",
+    "photoFileName": "pintu_gupta.jpg",
+    "batch": "2009-2013",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Suvonkar Dam",
+    "description": "Senior Technical Program Manager at Amazon",
+    "photoFileName": "suvonkar_dam.jpg",
+    "batch": "2004-2008",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Avijit Dey",
+    "description": "Senior Staff Software Engineer at Google",
+    "photoFileName": "avijit_dey.jpg",
+    "batch": "2000-2004",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Avik Paul",
+    "description": "Software Engineer at Google",
+    "photoFileName": "avik_paul.jpg",
+    "batch": "2000-2004",
+    "ug_pg": "ug"
+  },
+  {
+    "name": "Arijit Kundu",
+"description": "Practice Head- Digital & Technology Consulting/Future of Work at Tech Mahindra",
+    "photoFileName": "arijit_kundu.jpg",
+    "batch": "2000-2004",
+    "ug_pg": "ug"
   }
+
 ]
