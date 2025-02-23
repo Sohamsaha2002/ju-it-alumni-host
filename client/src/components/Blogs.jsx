@@ -42,6 +42,44 @@ const Blogs = ({ user }) => {
     }
   };
 
+  const likeBlog = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}/like`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to like blog');
+      }
+      const updatedBlog = await response.json();
+      setBlogs(blogs.map(blog => blog._id === id ? updatedBlog : blog));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const commentBlog = async (id, content) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}/comment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ content })
+      });
+      if (!response.ok) {
+        throw new Error('Failed to comment on blog');
+      }
+      const updatedBlog = await response.json();
+      setBlogs(blogs.map(blog => blog._id === id ? updatedBlog : blog));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="bg-cover bg-center h-40" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}>
@@ -53,7 +91,7 @@ const Blogs = ({ user }) => {
         {user && <CreateBlog addBlog={addBlog} />}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {blogs.map((blog) => (
-            <BlogPost key={blog._id} blog={blog} />
+            <BlogPost key={blog._id} blog={blog} user={user} onLike={likeBlog} onComment={commentBlog} />
           ))}
         </div>
       </div>

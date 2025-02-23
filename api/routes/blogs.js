@@ -35,7 +35,8 @@ router.post('/', verifyToken, async (req, res) => {
   const blog = new Blog({
     title,
     content,
-    author: req.user.name
+    author: req.user.name,
+    authorEmail: req.user.email
   });
 
   try {
@@ -43,6 +44,41 @@ router.post('/', verifyToken, async (req, res) => {
     res.status(201).json(newBlog);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+});
+
+// Like a blog
+router.post('/:id/like', verifyToken, async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).send({ message: 'Blog not found' });
+    }
+    blog.likes += 1;
+    await blog.save();
+    res.json(blog);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Comment on a blog
+router.post('/:id/comment', verifyToken, async (req, res) => {
+  const { content } = req.body;
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).send({ message: 'Blog not found' });
+    }
+    const comment = {
+      author: req.user.name,
+      content
+    };
+    blog.comments.push(comment);
+    await blog.save();
+    res.json(blog);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
