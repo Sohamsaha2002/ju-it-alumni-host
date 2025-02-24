@@ -37,6 +37,10 @@ const BlogSchema = new Schema({
     type: Number,
     default: 0
   },
+  likedBy: {
+    type: [String], // Array of user emails who liked the blog
+    default: []
+  },
   comments: [CommentSchema],
   createdAt: {
     type: Date,

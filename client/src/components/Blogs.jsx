@@ -44,14 +44,19 @@ const Blogs = ({ user }) => {
 
   const likeBlog = async (id) => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
       const response = await fetch(`http://localhost:5000/api/blogs/${id}/like`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       if (!response.ok) {
-        throw new Error('Failed to like blog');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to like blog');
       }
       const updatedBlog = await response.json();
       setBlogs(blogs.map(blog => blog._id === id ? updatedBlog : blog));
@@ -62,11 +67,15 @@ const Blogs = ({ user }) => {
 
   const commentBlog = async (id, content) => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
       const response = await fetch(`http://localhost:5000/api/blogs/${id}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ content })
       });

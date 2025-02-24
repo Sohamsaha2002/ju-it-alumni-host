@@ -14,14 +14,19 @@ const BlogPost = ({ blog, user, onLike, onComment }) => {
     setComment('');
   };
 
+  const hasLiked = user && blog.likedBy.includes(user.email);
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
       <h3 className="text-2xl font-bold mb-2">{blog.title}</h3>
       <p className="text-gray-700 mb-4">{blog.content}</p>
       <Link to={`/profile/${blog.authorEmail}`} className="text-blue-500 text-sm">By {blog.author}</Link>
       <div className="mt-4">
-        <button onClick={handleLike} className="text-blue-500 hover:text-blue-700">
-          Like ({blog.likes})
+        <button
+          onClick={handleLike}
+          className={`text-blue-500 hover:text-blue-700 ${hasLiked ? 'bg-blue-200' : ''}`}
+        >
+          {hasLiked ? 'Unlike' : 'Like'} ({blog.likes})
         </button>
       </div>
       {user && (

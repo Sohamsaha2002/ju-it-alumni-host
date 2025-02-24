@@ -6,7 +6,11 @@ const { SECRET_KEY } = process.env;
 
 // Middleware to verify token
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization.split(' ')[1];
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).send({ message: 'Unauthorized' });
+  }
+  const token = authHeader.split(' ')[1];
   if (!token) {
     return res.status(401).send({ message: 'Unauthorized' });
   }
@@ -47,14 +51,23 @@ router.post('/', verifyToken, async (req, res) => {
   }
 });
 
-// Like a blog
+// Like or unlike a blog
 router.post('/:id/like', verifyToken, async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) {
       return res.status(404).send({ message: 'Blog not found' });
     }
-    blog.likes += 1;
+    const userEmail = req.user.email;
+    if (blog.likedBy.includes(userEmail)) {
+      // Unlike the blog
+      blog.likes -= 1;
+      blog.likedBy = blog.likedBy.filter(email => email !== userEmail);
+    } else {
+      // Like the blog
+      blog.likes += 1;
+      blog.likedBy.push(userEmail);
+    }
     await blog.save();
     res.json(blog);
   } catch (err) {
