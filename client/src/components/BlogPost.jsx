@@ -5,6 +5,7 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 const BlogPost = ({ blog, user, onLike, onComment }) => {
   const [comment, setComment] = useState('');
+  const [showAllComments, setShowAllComments] = useState(false);
 
   const handleLike = () => {
     onLike(blog._id);
@@ -17,6 +18,8 @@ const BlogPost = ({ blog, user, onLike, onComment }) => {
   };
 
   const hasLiked = user && blog.likedBy.includes(user.email);
+
+  const displayedComments = showAllComments ? blog.comments : blog.comments.slice(0, 2);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
@@ -48,14 +51,20 @@ const BlogPost = ({ blog, user, onLike, onComment }) => {
         </form>
       )}
       <div className="mt-4">
-        {blog.comments && blog.comments.length > 0 ? (
-          blog.comments.map((comment, index) => (
+        <div className={`overflow-y-auto ${showAllComments ? 'max-h-40' : ''}`}>
+          {displayedComments.map((comment, index) => (
             <div key={index} className="bg-gray-100 p-2 rounded-lg mb-2">
               <p className="text-gray-700"><strong>{comment.author}:</strong> {comment.content}</p>
             </div>
-          ))
-        ) : (
-          <p className="text-gray-500">No comments yet.</p>
+          ))}
+        </div>
+        {blog.comments.length > 2 && (
+          <button
+            onClick={() => setShowAllComments(!showAllComments)}
+            className="text-blue-500 hover:underline mt-2"
+          >
+            {showAllComments ? 'Show Less' : 'Show More'}
+          </button>
         )}
       </div>
     </div>
