@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Blogs from './components/Blogs';
 import Achievement from './components/Achievement.jsx';
 import LoginSignup from './components/LoginSignup';
+import AdminPanel from './components/AdminPanel';
 import {jwtDecode} from 'jwt-decode';
 
 const App = () => {
@@ -55,6 +56,9 @@ const App = () => {
         <Route path="/blogs" element={<Blogs user={user} />} />
         <Route path="/achievement" element={<Achievement />} />
         <Route path="/login" element={<LoginSignup onLogin={handleLogin} />} />
+        {user && user.role === 'root' && (
+          <Route path="/admin" element={<AdminPanel user={user} />} />
+        )}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

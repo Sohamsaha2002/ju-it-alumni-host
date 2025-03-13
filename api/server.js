@@ -15,32 +15,30 @@ const SECRET_KEY = process.env.SECRET_KEY;
 const mongourl = process.env.MONGODB_URL;
 
 // Connect to MongoDB
-mongoose.connect(mongourl);
-
-// Define User schema and model
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true },
-  password: String,
+mongoose.connect(mongourl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-const User = mongoose.model('User', userSchema);
+// Import models
+const User = require('./models/User');
 
 // Routes
 const posts = require('./routes/posts');
 const blogs = require('./routes/blogs');
+const users = require('./routes/users');
 
 app.use('/api/posts', posts);
 app.use('/api/blogs', blogs);
+app.use('/api/users', users);
 
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({ name, email, password: hashedPassword, pending: true, role: 'user' });
     await user.save();
-    const token = jwt.sign({ name: user.name, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
-    res.status(201).send({ token });
+    res.status(201).send({ message: 'Registration successful. Awaiting approval.' });
   } catch (error) {
     res.status(400).send({ message: 'Error registering user', error });
   }
@@ -57,7 +55,10 @@ app.post('/login', async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).send({ message: 'Invalid email or password' });
     }
-    const token = jwt.sign({ name: user.name, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+    if (user.pending) {
+      return res.status(403).send({ message: 'Account pending approval' });
+    }
+    const token = jwt.sign({ _id: user._id, name: user.name, email: user.email, role: user.role }, SECRET_KEY, { expiresIn: '1h' });
     res.send({ token });
   } catch (error) {
     res.status(500).send({ message: 'Error logging in', error });

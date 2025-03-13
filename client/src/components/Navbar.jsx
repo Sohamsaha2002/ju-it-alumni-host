@@ -71,6 +71,11 @@ const Navbar = ({ user, onLogout }) => {
             <Link to="/donate" className={linkClasses("/donate")}>
               Donate
             </Link>
+            {user && user.role === 'root' && (
+              <Link to="/admin" className={linkClasses("/admin")}>
+                Admin Panel
+              </Link>
+            )}
             {user ? (
               <>
                 <span className="bg-white text-blue-800 text-lg font-medium mr-4 mt-4 lg:mt-0 px-4 py-2 rounded-full">
