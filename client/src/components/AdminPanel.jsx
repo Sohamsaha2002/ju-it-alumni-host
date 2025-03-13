@@ -48,19 +48,20 @@ const AdminPanel = ({ user }) => {
       {pendingUsers.length === 0 ? (
         <p>No pending users</p>
       ) : (
-        <ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pendingUsers.map(user => (
-            <li key={user._id} className="mb-4">
-              <p>{user.name} ({user.email})</p>
+            <div key={user._id} className="bg-gray-800 p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+              <h3 className="text-xl font-bold mb-2 text-white">{user.name}</h3>
+              <p className="text-gray-400 mb-4">{user.email}</p>
               <button
                 onClick={() => approveUser(user._id)}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"
               >
                 Approve
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
