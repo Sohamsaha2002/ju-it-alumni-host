@@ -52,7 +52,9 @@ const AdminPanel = ({ user }) => {
           {pendingUsers.map(user => (
             <div key={user._id} className="bg-gray-800 p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
               <h3 className="text-xl font-bold mb-2 text-white">{user.name}</h3>
-              <p className="text-gray-400 mb-4">{user.email}</p>
+              <p className="text-gray-400 mb-2">{user.email}</p>
+              <p className="text-gray-400 mb-2">Roll No: {user.rollNumber}</p>
+              <p className="text-gray-400 mb-4">Passout Batch: {user.passoutBatch}</p>
               <button
                 onClick={() => approveUser(user._id)}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"

@@ -33,10 +33,10 @@ app.use('/api/blogs', blogs);
 app.use('/api/users', users);
 
 app.post('/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, rollNumber, passoutBatch } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword, pending: true, role: 'user' });
+    const user = new User({ name, email, password: hashedPassword, rollNumber, passoutBatch, pending: true, role: 'user' });
     await user.save();
     res.status(201).send({ message: 'Registration successful. Awaiting approval.' });
   } catch (error) {

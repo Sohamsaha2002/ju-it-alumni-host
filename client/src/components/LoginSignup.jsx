@@ -7,6 +7,8 @@ const LoginSignup = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [rollNumber, setRollNumber] = useState('');
+  const [passoutBatch, setPassoutBatch] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -15,7 +17,7 @@ const LoginSignup = ({ onLogin }) => {
     try {
       const response = isLogin
         ? await axios.post('http://localhost:5000/login', { email, password })
-        : await axios.post('http://localhost:5000/register', { name, email, password });
+        : await axios.post('http://localhost:5000/register', { name, email, password, rollNumber, passoutBatch });
       onLogin(response.data.token);
       navigate('/'); // Redirect to home page after successful login or registration
     } catch (error) {
@@ -29,19 +31,47 @@ const LoginSignup = ({ onLogin }) => {
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
         <form onSubmit={handleSubmit}>
           {!isLogin && (
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded"
-                required
-              />
-            </div>
+            <>
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="rollNumber" className="block text-gray-700 font-bold mb-2">
+                  Roll Number
+                </label>
+                <input
+                  type="text"
+                  id="rollNumber"
+                  value={rollNumber}
+                  onChange={(e) => setRollNumber(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="passoutBatch" className="block text-gray-700 font-bold mb-2">
+                  Passout Batch
+                </label>
+                <input
+                  type="text"
+                  id="passoutBatch"
+                  value={passoutBatch}
+                  onChange={(e) => setPassoutBatch(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+            </>
           )}
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-bold mb-2">

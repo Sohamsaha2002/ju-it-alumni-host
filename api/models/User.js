@@ -15,6 +15,15 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  rollNumber: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  passoutBatch: {
+    type: String,
+    required: true
+  },
   pending: {
     type: Boolean,
     default: true
