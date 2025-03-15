@@ -10,6 +10,7 @@ const LoginSignup = ({ onLogin }) => {
   const [rollNumber, setRollNumber] = useState('');
   const [passoutBatch, setPassoutBatch] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -18,8 +19,13 @@ const LoginSignup = ({ onLogin }) => {
       const response = isLogin
         ? await axios.post('http://localhost:5000/login', { email, password })
         : await axios.post('http://localhost:5000/register', { name, email, password, rollNumber, passoutBatch });
-      onLogin(response.data.token);
-      navigate('/'); // Redirect to home page after successful login or registration
+      
+      if (isLogin) {
+        onLogin(response.data.token);
+        navigate('/'); // Redirect to home page after successful login
+      } else {
+        setMessage('Registration successful. Awaiting approval.');
+      }
     } catch (error) {
       setError('Invalid email or password');
     }
@@ -29,6 +35,7 @@ const LoginSignup = ({ onLogin }) => {
     <div className="p-6 bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
+        {message && <div className="text-green-500 mb-4">{message}</div>}
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
