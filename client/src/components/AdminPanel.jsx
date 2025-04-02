@@ -6,7 +6,7 @@ const AdminPanel = ({ user }) => {
   useEffect(() => {
     const fetchPendingUsers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/users/pending', {
+        const response = await fetch('https://ju-it-alumni-host.onrender.com/api/users/pending', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
@@ -26,7 +26,7 @@ const AdminPanel = ({ user }) => {
 
   const approveUser = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}/approve`, {
+      const response = await fetch(`https://ju-it-alumni-host.onrender.com/api/users/${userId}/approve`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

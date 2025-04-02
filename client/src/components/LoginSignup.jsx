@@ -17,8 +17,8 @@ const LoginSignup = ({ onLogin }) => {
     e.preventDefault();
     try {
       const response = isLogin
-        ? await axios.post('http://localhost:5000/login', { email, password })
-        : await axios.post('http://localhost:5000/register', { name, email, password, rollNumber, passoutBatch });
+        ? await axios.post('https://ju-it-alumni-host.onrender.com/login', { email, password })
+        : await axios.post('https://ju-it-alumni-host.onrender.com/register', { name, email, password, rollNumber, passoutBatch });
       
       if (isLogin) {
         onLogin(response.data.token);
