@@ -18,6 +18,19 @@ router.post('/:id/approve', authMiddleware, rootMiddleware, async (req, res) => 
   }
 });
 
+// Delete a user (decline registration request)
+router.delete('/:id', authMiddleware, rootMiddleware, async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User registration request declined' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Get pending users
 router.get('/pending', authMiddleware, rootMiddleware, async (req, res) => {
   try {
@@ -27,5 +40,3 @@ router.get('/pending', authMiddleware, rootMiddleware, async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
-module.exports = router;

@@ -9,17 +9,42 @@ const LoginSignup = ({ onLogin }) => {
   const [name, setName] = useState('');
   const [rollNumber, setRollNumber] = useState('');
   const [passoutBatch, setPassoutBatch] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
+  // Regular expressions for validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // Minimum 8 characters, at least one letter and one number
+
+  const isEmailValid = emailRegex.test(email);
+  const isPasswordValid = passwordRegex.test(password);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Client-side validation
+    if (!isEmailValid) {
+      setError('Invalid email format');
+      return;
+    }
+    if (!isPasswordValid) {
+      setError('Password must be at least 8 characters long and contain at least one letter and one number');
+      return;
+    }
+
     try {
       const response = isLogin
         ? await axios.post('https://ju-it-alumni-host.onrender.com/login', { email, password })
-        : await axios.post('https://ju-it-alumni-host.onrender.com/register', { name, email, password, rollNumber, passoutBatch });
-      
+        : await axios.post('https://ju-it-alumni-host.onrender.com/register', {
+            name,
+            email,
+            password,
+            rollNumber,
+            passoutBatch,
+            contactNumber
+          });
       if (isLogin) {
         onLogin(response.data.token);
         navigate('/'); // Redirect to home page after successful login
@@ -36,6 +61,7 @@ const LoginSignup = ({ onLogin }) => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
         {message && <div className="text-green-500 mb-4">{message}</div>}
+        {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
@@ -78,6 +104,19 @@ const LoginSignup = ({ onLogin }) => {
                   required
                 />
               </div>
+              <div className="mb-4">
+                <label htmlFor="contactNumber" className="block text-gray-700 font-bold mb-2">
+                  Contact Number (Preferably WhatsApp)
+                </label>
+                <input
+                  type="text"
+                  id="contactNumber"
+                  value={contactNumber}
+                  onChange={(e) => setContactNumber(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
             </>
           )}
           <div className="mb-4">
@@ -92,6 +131,11 @@ const LoginSignup = ({ onLogin }) => {
               className="w-full p-2 border border-gray-300 rounded"
               required
             />
+            <div className="mt-2">
+              <p className={`text-sm ${isEmailValid ? 'text-green-500' : 'text-red-500'}`}>
+                {isEmailValid ? '✔ Valid email format' : '✘ Invalid email format'}
+              </p>
+            </div>
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
@@ -105,8 +149,19 @@ const LoginSignup = ({ onLogin }) => {
               className="w-full p-2 border border-gray-300 rounded"
               required
             />
+            <div className="mt-2">
+              <p className={`text-sm ${password.length >= 8 ? 'text-green-500' : 'text-red-500'}`}>
+                {password.length >= 8 ? '✔ At least 8 characters' : '✘ At least 8 characters'}
+              </p>
+              <p className={`text-sm ${/(?=.*[A-Za-z])/.test(password) ? 'text-green-500' : 'text-red-500'}`}>
+                {/(?=.*[A-Za-z])/.test(password) ? '✔ Contains at least one letter' : '✘ Must contain at least one letter'}
+              </p>
+              <p className={`text-sm ${/(?=.*\d)/.test(password) ? 'text-green-500' : 'text-red-500'}`}>
+                {/(?=.*\d)/.test(password) ? '✔ Contains at least one number' : '✘ Must contain at least one number'}
+              </p>
+            </div>
           </div>
-          {error && <div className="text-red-500 mb-4">{error}</div>}
+
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors duration-300"
@@ -116,7 +171,11 @@ const LoginSignup = ({ onLogin }) => {
         </form>
         <div className="mt-4 text-center">
           <button
-            onClick={() => setIsLogin(!isLogin)}
+            onClick={() => {
+              setIsLogin(!isLogin);
+              setError('');
+              setMessage('');
+            }}
             className="text-blue-600 hover:underline"
           >
             {isLogin ? 'Create an account' : 'Already have an account? Login'}
@@ -126,5 +185,3 @@ const LoginSignup = ({ onLogin }) => {
     </div>
   );
 };
-
-export default LoginSignup;

@@ -41,6 +41,23 @@ const AdminPanel = ({ user }) => {
     }
   };
 
+  const declineUser = async (userId) => {
+    try {
+      const response = await fetch(`https://ju-it-alumni-host.onrender.com/api/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to decline user');
+      }
+      setPendingUsers(pendingUsers.filter(user => user._id !== userId));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6">Admin Panel</h1>
@@ -54,13 +71,22 @@ const AdminPanel = ({ user }) => {
               <h3 className="text-xl font-bold mb-2 text-white">{user.name}</h3>
               <p className="text-gray-400 mb-2">{user.email}</p>
               <p className="text-gray-400 mb-2">Roll No: {user.rollNumber}</p>
-              <p className="text-gray-400 mb-4">Passout Batch: {user.passoutBatch}</p>
-              <button
-                onClick={() => approveUser(user._id)}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"
-              >
-                Approve
-              </button>
+              <p className="text-gray-400 mb-2">Passout Batch: {user.passoutBatch}</p>
+              <p className="text-gray-400 mb-4">Contact: {user.contactNumber}</p>
+              <div className="flex space-x-4">
+                <button
+                  onClick={() => approveUser(user._id)}
+                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"
+                >
+                  Approve
+                </button>
+                <button
+                  onClick={() => declineUser(user._id)}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+                >
+                  Decline
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -68,5 +94,3 @@ const AdminPanel = ({ user }) => {
     </div>
   );
 };
-
-export default AdminPanel;

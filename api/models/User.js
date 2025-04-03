@@ -24,6 +24,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  contactNumber: {
+    type: String,
+    required: true
+  },
   pending: {
     type: Boolean,
     default: true
@@ -34,5 +38,3 @@ const UserSchema = new Schema({
     default: 'user'
   }
 });
-
-module.exports = mongoose.model('User', UserSchema);

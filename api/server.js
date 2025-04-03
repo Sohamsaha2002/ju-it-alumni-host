@@ -33,10 +33,19 @@ app.use('/api/blogs', blogs);
 app.use('/api/users', users);
 
 app.post('/register', async (req, res) => {
-  const { name, email, password, rollNumber, passoutBatch } = req.body;
+  const { name, email, password, rollNumber, passoutBatch, contactNumber } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword, rollNumber, passoutBatch, pending: true, role: 'user' });
+    const user = new User({
+      name,
+      email,
+      password: hashedPassword,
+      rollNumber,
+      passoutBatch,
+      contactNumber,
+      pending: true,
+      role: 'user'
+    });
     await user.save();
     res.status(201).send({ message: 'Registration successful. Awaiting approval.' });
   } catch (error) {
@@ -76,4 +85,3 @@ app.get('/profile', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
