@@ -26,6 +26,9 @@ const addRootUser = async () => {
       password: hashedPassword,
       pending: false,
       role: 'root',
+      rollNumber: '0000',
+      passoutBatch: '0000',
+      contactNumber: '0000000000',
     });
 
     await rootUser.save();
