@@ -94,3 +94,5 @@ const AdminPanel = ({ user }) => {
     </div>
   );
 };
+
+export default AdminPanel;

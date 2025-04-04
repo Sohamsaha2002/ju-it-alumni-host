@@ -161,7 +161,6 @@ const LoginSignup = ({ onLogin }) => {
               </p>
             </div>
           </div>
-
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors duration-300"
@@ -185,3 +184,5 @@ const LoginSignup = ({ onLogin }) => {
     </div>
   );
 };
+
+export default LoginSignup;
