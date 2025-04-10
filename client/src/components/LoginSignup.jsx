@@ -11,15 +11,16 @@ const LoginSignup = ({ onLogin }) => {
   const [passoutBatch, setPassoutBatch] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   // Regular expressions for validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // Minimum 8 characters, at least one letter and one number
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Minimum 8 characters, at least one letter, one number, and one special character
+  const phoneRegex = /^\d{10}$/; // Exactly 10 digits
 
   const isEmailValid = emailRegex.test(email);
   const isPasswordValid = passwordRegex.test(password);
+  const isPhoneValid = isLogin || phoneRegex.test(contactNumber); // Validate phone number only during registration
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +31,11 @@ const LoginSignup = ({ onLogin }) => {
       return;
     }
     if (!isPasswordValid) {
-      setError('Password must be at least 8 characters long and contain at least one letter and one number');
+      setError('Password must be at least 8 characters long, contain at least one letter, one number, and one special character');
+      return;
+    }
+    if (!isPhoneValid) {
+      setError('Contact number must be exactly 10 digits');
       return;
     }
 
@@ -49,7 +54,16 @@ const LoginSignup = ({ onLogin }) => {
         onLogin(response.data.token);
         navigate('/'); // Redirect to home page after successful login
       } else {
-        setMessage('Registration successful. Awaiting approval.');
+        // Show success message as a prompt
+        window.alert('Registration successful. Awaiting approval.');
+        // Clear the form fields
+        setName('');
+        setEmail('');
+        setPassword('');
+        setRollNumber('');
+        setPassoutBatch('');
+        setContactNumber('');
+        setError('');
       }
     } catch (error) {
       setError('Invalid email or password');
@@ -60,7 +74,6 @@ const LoginSignup = ({ onLogin }) => {
     <div className="p-6 bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
-        {message && <div className="text-green-500 mb-4">{message}</div>}
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
           {!isLogin && (
@@ -116,6 +129,11 @@ const LoginSignup = ({ onLogin }) => {
                   className="w-full p-2 border border-gray-300 rounded"
                   required
                 />
+                <div className="mt-2">
+                  <p className={`text-sm ${isPhoneValid ? 'text-green-500' : 'text-red-500'}`}>
+                    {isPhoneValid ? '✔ Valid phone number' : '✘ Phone number must be exactly 10 digits'}
+                  </p>
+                </div>
               </div>
             </>
           )}
@@ -159,6 +177,9 @@ const LoginSignup = ({ onLogin }) => {
               <p className={`text-sm ${/(?=.*\d)/.test(password) ? 'text-green-500' : 'text-red-500'}`}>
                 {/(?=.*\d)/.test(password) ? '✔ Contains at least one number' : '✘ Must contain at least one number'}
               </p>
+              <p className={`text-sm ${/(?=.*[@$!%*?&])/.test(password) ? 'text-green-500' : 'text-red-500'}`}>
+                {/(?=.*[@$!%*?&])/.test(password) ? '✔ Contains at least one special character' : '✘ Must contain at least one special character'}
+              </p>
             </div>
           </div>
           <button
@@ -173,7 +194,6 @@ const LoginSignup = ({ onLogin }) => {
             onClick={() => {
               setIsLogin(!isLogin);
               setError('');
-              setMessage('');
             }}
             className="text-blue-600 hover:underline"
           >

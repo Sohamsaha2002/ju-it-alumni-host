@@ -25,6 +25,9 @@ const AdminPanel = ({ user }) => {
   }, []);
 
   const approveUser = async (userId) => {
+    const confirmApprove = window.confirm('Are you sure you want to approve this user?');
+    if (!confirmApprove) return;
+
     try {
       const response = await fetch(`https://ju-it-alumni-host.onrender.com/api/users/${userId}/approve`, {
         method: 'POST',
@@ -42,6 +45,9 @@ const AdminPanel = ({ user }) => {
   };
 
   const declineUser = async (userId) => {
+    const confirmDecline = window.confirm('Are you sure you want to decline this user?');
+    if (!confirmDecline) return;
+
     try {
       const response = await fetch(`https://ju-it-alumni-host.onrender.com/api/users/${userId}`, {
         method: 'DELETE',
